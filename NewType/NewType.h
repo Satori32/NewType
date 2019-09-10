@@ -29,6 +29,7 @@ enum class CalculationID : std::size_t {
 	Watt,
 	Volt,
 	Radix,
+	Temporary.
 };
 
 
@@ -73,18 +74,24 @@ template<class T> using Joule = CalculationType < T, CalculationID::Joule>;
 template<class T> using Coulomb = CalculationType < T, CalculationID::Coulomb>;//ku-ronn
 template<class T> using Lumen = CalculationType < T, CalculationID::Lumen>;
 template<class T> using Watt = CalculationType < T, CalculationID::Watt>;
-template<class T> using Volt = CalculationType < T, CalculationID::Watt>;
+template<class T> using Volt = CalculationType < T, CalculationID::Volt>;
 template<class T> using Radix = CalculationType < T, CalculationID::Radix>;
-
+template<class T> using Temporary = CalculationType < T, CalculationID::Temporary>;
 
 template<class T> T StrongGravityConstant = 6.67431;
 template<class T> T WeekGravityConstant = 6.67408;
 template<class T> T GravityConstantMultipler = (1.0 / 100000000000);
 
 template<class T> T PlanckConstant_h={6.62607015e-34};
+template<class T> T ElementaryCharge_e = 1.602176634*std::pow(10,-19);//(Hz)
+template<class T> T BoltzmannConstant_kb ={1.380649e-23};//J/K
+template<class T> T AvogadroConstant_Na ={6.02214076e-23};//mol
+template<class T> T SpeedOfLightConstant_c ={ 299792458 };//m/s
+
 template<class T> T SI_a = 9.80665;
 template<class T> T SI_c = 299792458;//(m/s
 template<class T> T SI_DeltaVCs = 9192631770;//(Hz)
+
 
 template<class T> T Yocto = 0.000000000000000000000001;
 template<class T> T Zepto = 0.000000000000000000001;
@@ -110,8 +117,9 @@ template<class T> T Zetta= 1000000000000000000000.0;
 template<class T> T Yotta= 1000000000000000000000000.0;
 
 template<class T> Gram<T> OneJapanYen{ 1 };
-template<class T> Second<T> OneMeter{1.0/299792458.0};//光の進む速度の1/299792458
+template<class T> Temporary<T> OneMeter{1.0/299792458.0};//光の進む速度の1/299792458
 template<class T> Hertz<T> OneHertz{ 1 };//1move/second.
+template<class T> Temporary<T> OneCoulomb{ ElementaryCharge<T> / (1.602176634 * std::pow(10,-19)) }; 
 
 template<class T> Radix<T> Decimal{ 10.0 };
 template<class T> Radix<T> Binary{ 2.0 };
