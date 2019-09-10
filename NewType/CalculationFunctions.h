@@ -11,3 +11,4 @@ template<class T> Joule<T> MakeJoule(const Coulomb<T>& C, const Volt<T>& V) { re
 template<class T> Joule<T> MakeJoule(const Newton<T>& N, const Meter<T>& M) { return { N * M }; }
 template<class T> Joule<T> MakeJoule(const Watt<T>& W, const Second<T>& S) { return { W/S }; }
 template<class T> Joule<T> MakeCoulomb(const Ampere<T>& A, const Second<T>& S) { return { A*S }; }
+template<class T> Ohm<T> MakeOhm(const Ampere<T>& A, const Volt<T>& V) { return {V/A }; }
